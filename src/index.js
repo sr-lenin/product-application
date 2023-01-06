@@ -35,12 +35,15 @@ class UI {
 
   showMessage(message, cssClass) {
     const div = document.createElement("div");
-    div.className = `alert alert-${cssClass} `;
+    div.className = `alert alert-${cssClass} mt'2 `;
     div.appendChild(document.createTextNode(message));
     // showing in DOM
     const container = document.querySelector(".container");
     const app = document.querySelector("#app");
     container.insertBefore(div, app);
+    setTimeout(() => {
+      document.querySelector(".alert").remove();
+    }, 3000);
   }
 }
 
@@ -56,7 +59,7 @@ document.querySelector("#product-form").addEventListener("submit", (event) => {
   const ui = new UI();
   ui.addProduct(products);
   ui.resetForm();
-  ui.showMessage('Product Added good', 'succes')
+  ui.showMessage("Product Added good", "success");
 });
 
 document.querySelector("#product-list").addEventListener("click", (event) => {
